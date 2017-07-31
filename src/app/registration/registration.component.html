@@ -1,0 +1,24 @@
+
+<form class="registration-form" [formGroup]="regForm" (ngSubmit)="onCreate(regForm.value)">
+    <md-input-container>
+        <input mdInput placeholder="Name" formControlName="name">
+    </md-input-container>
+    <md-input-container>
+        <input mdInput placeholder="Lastname" formControlName="lastName">
+    </md-input-container>
+    <md-input-container>
+        <input mdInput placeholder="Email" type="email" formControlName="email">
+    </md-input-container>
+    <md-input-container>
+        <input mdInput [mdDatepicker]="picker" placeholder="Choose a date"  formControlName="date" [mdDatepickerFilter]="yearFilter">
+        <button mdSuffix [mdDatepickerToggle]="picker"></button>
+    </md-input-container>
+    <md-datepicker #picker></md-datepicker>
+    <md-input-container>
+        <input mdInput placeholder="Password" type="password" formControlName="password">
+    </md-input-container>
+    <input type="submit" value="Sign In" [disabled]="!regForm.valid">
+    <p>Data {{regForm.value | json}}</p>
+    <p>Data {{regForm.get('secretLairs')}}</p>
+
+</form>

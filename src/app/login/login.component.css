@@ -1,0 +1,19 @@
+.login{
+    margin:auto;
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+}
+.login__form{
+    display: flex;
+    flex-direction: column;
+}
+.login__buttons{
+    margin-top:20px;
+    display: flex;
+    justify-content: space-around;
+}
+.login__btn-reg .login__btn-forgot{
+    margin: 10px;
+    width: 80px;
+}
