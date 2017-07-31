@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
+import {UserService} from "../user.service";
+import {User} from "../user";
 
 @Component({
     selector: 'app-login',
@@ -9,30 +11,32 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
+    users = [];
 
-    constructor(private fb: FormBuilder, private router: Router) {
+    constructor(private fb: FormBuilder,
+                private router: Router,
+                private userService: UserService) {
     }
 
     ngOnInit() {
         this.buildForm();
+        this.users = this.userService.getAllUsers();
     }
 
     buildForm() {
         this.loginForm = this.fb.group({
-            'email': [null, this.validateEmail],
+            email: [null, Validators.required],
+            password: [null, Validators.required]
         });
     }
 
+
     onSubmit() {
+
         this.router.navigate(['/profile']);
+        debugger;
+        const a = this.loginForm.value;
     }
 
-    validateEmail(em: FormControl) {
-        const email = localStorage.getItem('userEmail');
-        return email === em.value ? null : {
-            validatePassword: {
-                valid: false
-            }
-        };
-    }
+
 }

@@ -4,22 +4,26 @@ import {User} from './user';
 
 @Injectable()
 export class UserService {
-    user: User;
-    usersList: Array<User>;
+    usersList = [];
 
     constructor() {
-        this.usersList = [];
     }
+
 
     addUser(userData: User): void {
-        localStorage.setItem('userEmail', userData.email);
-        this.usersList.push(new User(userData.name, userData.lastname, userData.email, userData.date, userData.password));
-
+        this.usersList = JSON.parse(localStorage.getItem('users')) || [];
+        this.usersList.push({
+            name: userData.name,
+            lastname: userData.lastname,
+            email: userData.email,
+            dateOfBirth: userData.date,
+            password: userData.password
+        });
+        localStorage.setItem('users', JSON.stringify(this.usersList));
     }
-    // addToLockalStorage(user:User){
-    //     localStorage.setItem('users':)
-    // }
-    getUserById() {
 
+    getAllUsers(){
+        return JSON.parse(localStorage.getItem('users'));
     }
+
 }
