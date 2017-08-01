@@ -1,16 +1,35 @@
-<table>
-    <tr mdSort (mdSortChange)="sortData($event)">
-        <th class="table-header" md-sort-header="name">Name</th>
-        <th class="table-header" md-sort-header="lastname">Lastname</th>
-        <th class="table-header" md-sort-header="dateOfBirth">Date of Birth</th>
-        <th class="table-header" md-sort-header="Email">Email</th>
+<div class="page-content__wrapper">
+    <table class="page-content__table table-bordered">
+        <tr mdSort (mdSortChange)="sortData($event)">
+            <th class="table-header" md-sort-header="name">Name</th>
+            <th class="table-header" md-sort-header="lastname">Lastname</th>
+            <th class="table-header" md-sort-header="dateOfBirth">Date of Birth</th>
+            <th class="table-header" md-sort-header="Email">Email</th>
 
-    </tr>
+        </tr>
 
-    <tr *ngFor="let user of users">
-        <td class="table-item">{{user.name}}</td>
-        <td class="table-item">{{user.lastname}}</td>
-        <td class="table-item">{{user.dateOfBirth.slice(0,10)}}</td>
-        <td class="table-item">{{user.email}}</td>
-    </tr>
-</table>
+        <tr *ngFor="let user of users">
+            <td class="table-item">{{user.name}}</td>
+            <td class="table-item">{{user.lastname}}</td>
+            <td class="table-item">{{user.dateOfBirth | date}}</td>
+            <td class="table-item">{{user.email}}</td>
+        </tr>
+    </table>
+
+    <div class="page-content__user-search">
+        <form class="form-inline">
+            <div class="form-group">
+                <label for="name">Search : </label>
+                <input type="text" [(ngModel)]="letters" [ngModelOptions]="{standalone: true}" class="form-control"
+                       id="name" placeholder="Search by name ...">
+            </div>
+        </form>
+
+        <ul class="list-unstyled">
+            <li class="" *ngFor="let user of users | searchUser:letters:users">
+                <p>{{user.name}}</p>
+                <p>{{user.email}}</p>
+            </li>
+        </ul>
+    </div>
+</div>

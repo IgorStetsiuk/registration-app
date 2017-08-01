@@ -12,8 +12,7 @@ export class HomeComponent implements OnInit {
     }
 
     ngOnInit() {
-        debugger;
-        if ((localStorage.length) && (localStorage.getItem('users'))) {
+         if ((localStorage.length) && (localStorage.getItem('users'))) {
             this.router.navigate(['/login']);
         } else {
             this.router.navigate(['/registration']);

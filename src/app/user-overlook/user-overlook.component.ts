@@ -1,49 +1,35 @@
 import {Component, OnInit} from '@angular/core';
-import {UserService} from "../user.service";
+import {UserService} from '../user.service';
 import {Sort} from '@angular/material';
+import {UserOverlookService} from './user-overlook.service'
+
+
 
 @Component({
     selector: 'app-user-overlook',
     templateUrl: './user-overlook.component.html',
-    styleUrls: ['./user-overlook.component.css']
+    styleUrls: ['./user-overlook.component.css'],
+    providers: [UserOverlookService],
 })
+
 export class UserOverlookComponent implements OnInit {
     users;
     sortedData;
+    letters;
 
-    constructor(private userService: UserService) {
-        this.users = this.userService.getAllUsers();
+
+    constructor(private userService: UserService,
+                private userOverlookService: UserOverlookService) {
     }
 
     ngOnInit() {
+        this.users = this.userService.getAllUsers();
     }
 
     sortData(sort: Sort) {
-        const data = this.users;
-        if (!sort.active || sort.direction === '') {
-            this.sortedData = data;
-            return;
-        }
-
-        this.sortedData = data.sort((a, b) => {
-            const isAsc = sort.direction === 'asc';
-            switch (sort.active) {
-                case 'name':
-                    return compare(a.name, b.name, isAsc);
-                case 'lastname':
-                    return compare(+a.lastname, +b.lastname, isAsc);
-                case 'dateOfBirth':
-                    return compare(+a.dateOfBirth, +b.dateOfBirth, isAsc);
-                case 'email':
-                    return compare(+a.email, +b.email, isAsc);
-
-                default:
-                    return 0;
-            }
-        });
+        this.sortedData = this.userOverlookService.sortData(sort, this.users, this.sortedData);
     }
+
 }
-function compare(a, b, isAsc) {
-    return (a < b ? -1 : 1) * (isAsc ? 1 : -1);
-}
+
 

@@ -1,6 +1,6 @@
 .header{
     height: 100px;
-    background: #8196ff;
+    background: #337AB7;
     margin-bottom: 30px;
 }
 
@@ -24,4 +24,17 @@
 
 .page-content {
     padding-left: 20px;
+    width: 100%;
+}
+
+.content-user-data {
+    margin-bottom: 30px;
+}
+.edit-name__input {
+    width: 100px;
+}
+
+.all-user-data{
+    display: flex;
+    flex-direction: row;
 }

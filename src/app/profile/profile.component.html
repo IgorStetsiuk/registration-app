@@ -3,6 +3,8 @@
         <div class="container">
             <div class="header__wrap">
                 <div class="header__user">
+                    <p> {{currentUserData.name}}</p>
+                    <p> {{currentUserData.lastname}}</p>
 
                 </div>
                 <div class="header__logout">
@@ -12,21 +14,38 @@
         </div>
     </header>
     <div class="content">
-
         <div class="container">
+            <div class="content-user-data">
+                <form class="form-inline">
+                    <div class="form-group">
+                        <label for="name">Edit hero Name:</label>
+                        <input type="text" [(ngModel)]="currentUserData.name" [ngModelOptions]="{standalone: true}" class="form-control edit-name__input"
+                               id="name" placeholder="Edit name">
+                    </div>
+                </form>
+               <div class="all-user-data"> <span>All info</span>
+                <span>{{currentUserData.name}}</span>
+                <span>{{currentUserData.lastname}}</span>
+                <span>{{currentUserData.dateOfBirth|date}}</span>
+                <span>{{currentUserData.password}}</span></div>
+            </div>
             <div class="content-wrap">
                 <aside class="sidebar">
                     <ul class="list-group">
                         <li class="list-group-item">
-                            <a routerLink="/profile/user-overlook" class="btn btn-primary" role="button">User table</a>
+                            <a routerLink="/profile" class="btn btn-primary" role="button">Profile</a>
                         </li>
                         <li class="list-group-item">
-                            <a href="#" class="btn btn-primary" role="button">Primary link</a>
+                            <a routerLink="/profile/user-overlook" class="btn btn-primary" role="button">Users table</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a routerLink="/profile/timer" class="btn btn-primary" role="button">Timer</a>
                         </li>
                     </ul>
                 </aside>
                 <div class="page-content">
                     <router-outlet></router-outlet>
+
                 </div>
             </div>
         </div>

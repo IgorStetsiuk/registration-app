@@ -11,6 +11,7 @@ export class UserService {
 
 
     addUser(userData: User): void {
+        localStorage.setItem('user', JSON.stringify(userData));
         this.usersList = JSON.parse(localStorage.getItem('users')) || [];
         this.usersList.push({
             name: userData.name,
@@ -24,7 +25,17 @@ export class UserService {
 
     getAllUsers() {
         const usersObj = JSON.parse(localStorage.getItem('users'));
-        return  [...usersObj];
+        return [...usersObj];
+    }
+
+    findUserByEmail(userEmail) {
+        let rez = null;
+        this.getAllUsers().forEach((user => {
+            if (user.email === userEmail) {
+                rez = user;
+            }
+        }));
+        return rez;
     }
 
 }

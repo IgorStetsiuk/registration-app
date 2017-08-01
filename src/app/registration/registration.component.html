@@ -10,7 +10,7 @@
         <input mdInput placeholder="Email" type="email" formControlName="email">
     </md-input-container>
     <md-input-container>
-        <input mdInput [mdDatepicker]="picker" placeholder="Choose a date"  formControlName="date" [mdDatepickerFilter]="yearFilter">
+        <input mdInput [mdDatepicker]="picker" placeholder="Enter your birthday"  formControlName="date" [mdDatepickerFilter]="yearFilter">
         <button mdSuffix [mdDatepickerToggle]="picker"></button>
     </md-input-container>
     <md-datepicker #picker></md-datepicker>
@@ -18,6 +18,4 @@
         <input mdInput placeholder="Password" type="password" formControlName="password">
     </md-input-container>
     <input type="submit" value="Sign In" [disabled]="!regForm.valid">
-    <p>Data {{regForm.value | json}}</p>
-
 </form>

@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {UserService} from "../user.service"
 import {User} from "../user";
-import {Router} from '@angular/router';
+import {NavigationExtras, Router} from '@angular/router';
 
 
 @Component({
@@ -13,7 +13,6 @@ import {Router} from '@angular/router';
 
 export class RegistrationComponent implements OnInit {
     regForm: FormGroup;
-
 
 
     constructor(private fb: FormBuilder, private userService: UserService, private router: Router) {
@@ -39,8 +38,13 @@ export class RegistrationComponent implements OnInit {
     }
 
     onCreate(user: User) {
-        this.userService.addUser(user);
-        this.router.navigate(['/profile']);
+               this.userService.addUser(user);
+        const extractData: NavigationExtras = {
+            queryParams: {
+                'email': this.regForm.value.email
+            }
+        };
+        this.router.navigate(['/profile'], extractData);
     }
 
 }

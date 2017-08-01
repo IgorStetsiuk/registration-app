@@ -1,6 +1,25 @@
-.table-header{
+.table-header {
     padding: 0 10px 5px;
 }
+
 .table-item {
     padding: 0 10px 5px;
+}
+
+.page-content__wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+
+}
+
+.page-content__user-search {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.page-content__table {
+    display: flex;
+
 }

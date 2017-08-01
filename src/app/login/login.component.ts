@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
-import {Router} from '@angular/router';
+import {Router, NavigationExtras} from '@angular/router';
 import {UserService} from '../user.service';
 import {LoginService} from "./login.service";
 
@@ -37,7 +37,13 @@ export class LoginComponent implements OnInit {
     onSubmit(formControls) {
         const isValidUser = this.loginService.validateUser(this.users, formControls);
         if (isValidUser) {
-            this.router.navigate(['/profile']);
+            const extractData: NavigationExtras = {
+                queryParams: {
+                    'email': this.loginForm.value.email
+                }
+            };
+
+            this.router.navigate(['/profile'], extractData);
         } else {
             alert('Incorrect password or email');
         }
