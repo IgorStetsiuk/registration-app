@@ -15,6 +15,10 @@ import {AppRoutingModule} from './app-routing.module';
 import { LoginComponent } from './login/login.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { UserDataComponent } from './user-data/user-data.component';
+import {MdSidenavModule} from '@angular/material';
+import {MdMenuModule} from '@angular/material';
+import { UserOverlookComponent } from './user-overlook/user-overlook.component';
+import {MdSortModule} from '@angular/material';
 
 
 @NgModule({
@@ -25,7 +29,8 @@ import { UserDataComponent } from './user-data/user-data.component';
         ProfileComponent,
         LoginComponent,
         ForgotPasswordComponent,
-        UserDataComponent
+        UserDataComponent,
+        UserOverlookComponent
     ],
     imports: [
         BrowserModule,
@@ -35,7 +40,10 @@ import { UserDataComponent } from './user-data/user-data.component';
         MdInputModule,
         MdDatepickerModule,
         MdNativeDateModule,
-        AppRoutingModule
+        AppRoutingModule,
+        MdSidenavModule,
+        MdMenuModule,
+        MdSortModule
     ],
     providers: [UserService],
     bootstrap: [AppComponent]

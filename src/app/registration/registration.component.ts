@@ -26,7 +26,7 @@ export class RegistrationComponent implements OnInit {
     buildForm() {
         this.regForm = this.fb.group({
             'name': [null, Validators.required],
-            'lastName': [null, Validators.compose([Validators.required, Validators.min(3)])],
+            'lastname': [null, Validators.compose([Validators.required, Validators.min(3)])],
             'email': [null, Validators.email],
             'date': '',
             'password': [null, Validators.minLength(3)]

@@ -1,13 +1,15 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup, FormBuilder, Validators, FormControl} from '@angular/forms';
 import {Router} from '@angular/router';
-import {UserService} from "../user.service";
-import {User} from "../user";
+import {UserService} from '../user.service';
+import {LoginService} from "./login.service";
+
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
-    styleUrls: ['./login.component.css']
+    styleUrls: ['./login.component.css'],
+    providers: [LoginService]
 })
 export class LoginComponent implements OnInit {
     loginForm: FormGroup;
@@ -15,7 +17,8 @@ export class LoginComponent implements OnInit {
 
     constructor(private fb: FormBuilder,
                 private router: Router,
-                private userService: UserService) {
+                private userService: UserService,
+                private loginService: LoginService) {
     }
 
     ngOnInit() {
@@ -31,12 +34,13 @@ export class LoginComponent implements OnInit {
     }
 
 
-    onSubmit() {
-
-        this.router.navigate(['/profile']);
-        debugger;
-        const a = this.loginForm.value;
+    onSubmit(formControls) {
+        const isValidUser = this.loginService.validateUser(this.users, formControls);
+        if (isValidUser) {
+            this.router.navigate(['/profile']);
+        } else {
+            alert('Incorrect password or email');
+        }
     }
-
 
 }

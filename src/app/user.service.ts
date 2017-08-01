@@ -22,8 +22,9 @@ export class UserService {
         localStorage.setItem('users', JSON.stringify(this.usersList));
     }
 
-    getAllUsers(){
-        return JSON.parse(localStorage.getItem('users'));
+    getAllUsers() {
+        const usersObj = JSON.parse(localStorage.getItem('users'));
+        return  [...usersObj];
     }
 
 }

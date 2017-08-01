@@ -1,5 +1,5 @@
 <div class="login">
-    <form class="login__form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <form class="login__form" [formGroup]="loginForm" (ngSubmit)="onSubmit(loginForm.value)">
         <md-input-container>
             <input mdInput placeholder="Email" type="email" formControlName="email">
         </md-input-container>

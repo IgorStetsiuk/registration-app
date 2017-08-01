@@ -1,5 +1,34 @@
 <div class="wrapper">
-  <div class="header">
+    <header class="header">
+        <div class="container">
+            <div class="header__wrap">
+                <div class="header__user">
 
-  </div>
+                </div>
+                <div class="header__logout">
+                    <button type="button" class="btn btn-danger" routerLink="/home">Logout</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="content">
+
+        <div class="container">
+            <div class="content-wrap">
+                <aside class="sidebar">
+                    <ul class="list-group">
+                        <li class="list-group-item">
+                            <a routerLink="/profile/user-overlook" class="btn btn-primary" role="button">User table</a>
+                        </li>
+                        <li class="list-group-item">
+                            <a href="#" class="btn btn-primary" role="button">Primary link</a>
+                        </li>
+                    </ul>
+                </aside>
+                <div class="page-content">
+                    <router-outlet></router-outlet>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

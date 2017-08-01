@@ -6,6 +6,7 @@ import {LoginComponent} from "./login/login.component";
 import {ProfileComponent} from "./profile/profile.component";
 import {ForgotPasswordComponent} from "./forgot-password/forgot-password.component";
 import {UserDataComponent} from "./user-data/user-data.component";
+import {UserOverlookComponent} from "./user-overlook/user-overlook.component";
 
 
 const routes: Routes = [
@@ -28,7 +29,13 @@ const routes: Routes = [
     },
     {
         path: 'profile',
-        component: ProfileComponent
+        component: ProfileComponent,
+        children: [
+            {
+                path: 'user-overlook',
+                component: UserOverlookComponent
+            }
+        ]
     },
     {
         path: 'forgot-password',

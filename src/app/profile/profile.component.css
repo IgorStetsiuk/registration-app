@@ -3,3 +3,25 @@
     background: #8196ff;
     margin-bottom: 30px;
 }
+
+.header__wrap{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.header__logout {
+    margin-top:40px;
+}
+
+.sidebar{
+    width: 200px;
+}
+.content-wrap {
+    display: flex;
+    flex-direction: row;
+
+}
+
+.page-content {
+    padding-left: 20px;
+}
