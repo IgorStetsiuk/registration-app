@@ -35,6 +35,10 @@
 }
 
 .all-user-data{
+    margin-top: 20px;
+    height: 40px;
+    width: 600px;
+    justify-content:space-between;
     display: flex;
     flex-direction: row;
 }

@@ -8,28 +8,24 @@ import {TimerService} from "./timer.service";
     providers: [TimerService]
 })
 export class TimerComponent implements OnInit {
-    private currentTime: number;
-    private timerService: TimerService;
-    private timer: any;
+    currentTime: number;
+    timerId: any;
+    userTime;
 
-    constructor(timerService: TimerService) {
-        this.timerService = timerService;
+    constructor(private timerService: TimerService) {
         this.resetTimer();
     }
 
     ngOnInit() {
+
     }
 
     getCurrentTime() {
         return this.currentTime;
     }
 
-    /**
-     * Parsing input field
-     * @returns {number} - parsed integer value
-     */
     validateInputData(): number {
-        const value = (<HTMLInputElement>document.getElementById('timerInputTime')).value;
+        const value = this.userTime;
         if (value.length > 0) {
             const minutes = parseInt(value);
             if (minutes > 0) {
@@ -40,23 +36,21 @@ export class TimerComponent implements OnInit {
         return 0;
     }
 
-    /**
-     * Start countdown according to set min
-     */
     startCount() {
         this.timerService.setCountdownTime(this.validateInputData());
         this.timerService.start();
-        this.timer = setInterval(() => {
+        this.timerId = setInterval(() => {
             this.currentTime = this.timerService.updateTime();
         }, 1);
     }
 
 
     resetTimer() {
-        clearInterval(this.timer);
+        clearInterval(this.timerId);
         this.timerService.reset();
         this.currentTime = this.timerService.updateTime();
     }
+
 
     formatTime(timeMs: number) {
         let minutes: string,
@@ -65,4 +59,5 @@ export class TimerComponent implements OnInit {
         seconds = ((timeMs % 60000) / 1000).toFixed(3);
         return minutes + ':' + (+seconds < 10 ? '0' : '') + seconds;
     }
+
 }

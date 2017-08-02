@@ -1,9 +1,4 @@
 import {Component, OnInit} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import 'rxjs/add/operator/filter';
-import 'rxjs/add/operator/map';
-import {UserService} from "../user.service";
-
 
 @Component({
     selector: 'app-profile',
@@ -11,20 +6,14 @@ import {UserService} from "../user.service";
     styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
-    userEmail;
+
     currentUserData;
 
-    constructor(private route: ActivatedRoute,
-                private userService: UserService) {
-
+    constructor() {
     }
 
     ngOnInit() {
-
-        this.userEmail = this.route.snapshot.queryParams.email;
-        this.currentUserData = this.userService.findUserByEmail(this.userEmail);
-
-
+        this.currentUserData = JSON.parse(localStorage.getItem('user'));
     }
 
 

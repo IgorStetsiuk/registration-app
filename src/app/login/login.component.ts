@@ -37,13 +37,7 @@ export class LoginComponent implements OnInit {
     onSubmit(formControls) {
         const isValidUser = this.loginService.validateUser(this.users, formControls);
         if (isValidUser) {
-            const extractData: NavigationExtras = {
-                queryParams: {
-                    'email': this.loginForm.value.email
-                }
-            };
-
-            this.router.navigate(['/profile'], extractData);
+            this.router.navigate(['/profile']);
         } else {
             alert('Incorrect password or email');
         }

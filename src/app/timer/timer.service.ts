@@ -1,12 +1,10 @@
 import {Injectable} from '@angular/core';
-import {ClockEvents, currentTime} from './time';
 
 @Injectable()
-export class TimerService implements ClockEvents {
-
-    private countMinutes: number;
-    private startTime: number;
-    public currentTime: number;
+export class TimerService {
+    countMinutes: number;
+    startTime: number;
+    currentTime: number;
 
     constructor() {
         this.reset();
@@ -17,7 +15,7 @@ export class TimerService implements ClockEvents {
     }
 
     start(): void {
-        this.startTime = currentTime();
+        this.startTime = this.timeNow();
     }
 
     stop(): void {
@@ -32,10 +30,14 @@ export class TimerService implements ClockEvents {
 
     updateTime(): number {
         const future = new Date(this.startTime + this.countMinutes * 60000).getTime();
-        this.currentTime = future - currentTime();
+        this.currentTime = future - this.timeNow()
         if (this.currentTime < 0) {
             this.reset();
         }
         return this.currentTime;
+    }
+
+    timeNow(): number {
+        return (new Date()).getTime();
     }
 }

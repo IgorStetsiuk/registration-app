@@ -5,7 +5,6 @@
                 <div class="header__user">
                     <p> {{currentUserData.name}}</p>
                     <p> {{currentUserData.lastname}}</p>
-
                 </div>
                 <div class="header__logout">
                     <button type="button" class="btn btn-danger" routerLink="/home">Logout</button>
@@ -18,16 +17,16 @@
             <div class="content-user-data">
                 <form class="form-inline">
                     <div class="form-group">
-                        <label for="name">Edit hero Name:</label>
+                        <label for="name">Edit Name:</label>
                         <input type="text" [(ngModel)]="currentUserData.name" [ngModelOptions]="{standalone: true}" class="form-control edit-name__input"
                                id="name" placeholder="Edit name">
                     </div>
                 </form>
-               <div class="all-user-data"> <span>All info</span>
-                <span>{{currentUserData.name}}</span>
-                <span>{{currentUserData.lastname}}</span>
-                <span>{{currentUserData.dateOfBirth|date}}</span>
-                <span>{{currentUserData.password}}</span></div>
+               <div class="all-user-data bg-info"> <span>All info</span>
+                <span class="">Name: {{currentUserData.name}}</span>
+                <span class="">Lastname:{{currentUserData.lastname}}</span>
+                <span class="">Date of birth : {{currentUserData.date |date}}</span>
+                <span class="">Password : {{currentUserData.password}}</span></div>
             </div>
             <div class="content-wrap">
                 <aside class="sidebar">
