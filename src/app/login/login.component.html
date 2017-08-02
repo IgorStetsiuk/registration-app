@@ -6,11 +6,11 @@
         <md-input-container>
             <input mdInput placeholder="Password" type="password" formControlName="password">
         </md-input-container>
-        <input type="submit" value="Sign In" [disabled]="!loginForm.valid">
+        <button type="submit" class="btn btn-success"  [disabled]="!loginForm.valid">Sign in</button>
 
     </form>
     <div class="login__buttons">
-        <button md-button routerLink="/registration" class="login__btn-reg">Registration</button>
-        <button md-button routerLink="/forgot-password" class="login__btn-forgot">Forgot password</button>
+        <button md-button routerLink="/registration" class="login__btn-reg btn btn-primary">Registration</button>
+        <button md-button routerLink="/forgot-password" class="login__btn-forgot btn btn-danger">Forgot password</button>
     </div>
 </div>
