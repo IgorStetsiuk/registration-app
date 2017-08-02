@@ -1,4 +1,4 @@
-<label for="timer">Enter time:
-    <input id="timer" name="timer" type="number" [(ngModel)]="time" placeholder="Enter time"><br>
-    {{time}}
-</label>
+<h1>Countdown timer: {{formatTime(getCurrentTime())}}</h1>
+<input type="text" id="timerInputTime"/>
+<button (click)="startCount()">Start</button>
+<button (click)="resetTimer()">Reset</button>
